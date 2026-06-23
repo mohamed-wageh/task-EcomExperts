@@ -1,3 +1,122 @@
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/fonnts.com-Gilroy-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/fonnts.com-Gilroy-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/fonnts.com-Gilroy-Bold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/fonnts.com-Gilroy-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/fonnts.com-Gilroy-Heavy.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ── Primary ── */
+  --color-purple: #4E2FD2;
+  --color-purple-70: rgba(78, 47, 210, 0.70);
+  --color-purple-10: rgba(78, 47, 210, 0.10);
+  --color-purple-05: rgba(78, 47, 210, 0.05);
+
+  /* ── Accents ── */
+  --color-green: #0AA288;
+  --color-red: #D8392B;
+  --color-mint: #1DF0BB;
+  --color-mint-subtle: rgba(29, 240, 187, 0.04);
+  --color-blue-link: #0000EE;
+  --color-blue: #0046C7;
+  --color-blue-light: #EDF4FF;
+  --color-blue-pale: #E7EFFD;
+
+  /* ── Grays ── */
+  --color-black: #000000;
+  --color-obsidian: #1F1F1F;
+  --color-obsidian-75: rgba(31, 31, 31, 0.75);
+  --color-gray-800: #484848;
+  --color-gray-700: #525963;
+  --color-gray-600: #575757;
+  --color-gray-500: #6F7882;
+  --color-gray-300: #CCCCCC;
+  --color-gray-250: #CED6DE;
+  --color-gray-200: #F0F0F0;
+  --color-gray-150: #F1F1F2;
+  --color-gray-100: #F0F4F7;
+
+  /* ── Surfaces ── */
+  --color-white: #FFFFFF;
+  --color-white-subtle: rgba(255, 255, 255, 0.04);
+  --color-bg: #F0F4F7;
+  --color-bg-review: #F0F4F7;
+
+  /* ── Typography ── */
+  --font-family: 'Gilroy', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --font-size-xs: 0.6875rem;   /* 11px */
+  --font-size-sm: 0.75rem;     /* 12px */
+  --font-size-base: 0.8125rem; /* 13px */
+  --font-size-md: 0.875rem;    /* 14px */
+  --font-size-lg: 1rem;        /* 16px */
+  --font-size-xl: 1.25rem;     /* 20px */
+  --font-size-2xl: 1.5rem;     /* 24px */
+  --font-size-3xl: 2rem;       /* 32px */
+
+  /* ── Spacing ── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* ── Radius ── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.10);
+  --shadow-card-hover: 0 4px 12px rgba(78, 47, 210, 0.12);
+
+  /* ── Transitions ── */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+}
+
 *,
 *::before,
 *::after {
@@ -6,13 +125,57 @@
   padding: 0;
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #1a1a2e;
-  background: #f9fafb;
+html {
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: var(--font-size-md);
+  color: var(--color-obsidian);
+  background-color: var(--color-white);
+  line-height: 1.5;
 }
 
 #root {
   min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: var(--font-family);
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: inherit;
+  color: inherit;
+}
+
+a {
+  color: var(--color-blue-link);
+  text-decoration: underline;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
