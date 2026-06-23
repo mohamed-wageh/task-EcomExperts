@@ -45,7 +45,7 @@ const AccordionStep = memo(function AccordionStep({
         <div className="accordion-step__header-left">
           <span className="accordion-step__icon">
             <img
-              src={`/icons/step-${step.icon}.svg`}
+              src={`/icons/${step.icon}.svg`}
               alt=""
               aria-hidden="true"
             />
@@ -70,21 +70,23 @@ const AccordionStep = memo(function AccordionStep({
         className={`accordion-step__content${isOpen ? ' accordion-step__content--open' : ''}`}
         aria-hidden={!isOpen}
       >
-        <div className="accordion-step__products">
-          {step.products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        <div className="accordion-step__inner">
+          <div className="accordion-step__products">
+            {step.products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
 
-        {step.nextLabel && (
-          <button
-            className="accordion-step__next-btn"
-            onClick={handleNext}
-            type="button"
-          >
-            {step.nextLabel}
-          </button>
-        )}
+          {step.nextLabel && (
+            <button
+              className="accordion-step__next-btn"
+              onClick={handleNext}
+              type="button"
+            >
+              {step.nextLabel}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

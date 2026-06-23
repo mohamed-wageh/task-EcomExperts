@@ -1,4 +1,5 @@
-import { createContext, useContext, useReducer, useCallback } from 'react';
+import { createContext, useContext, useReducer, useCallback, useEffect } from 'react';
+import { buildInitialQuantities, buildInitialSelectedVariants } from '../utils/stateHelpers.js';
 
 const BundleContext = createContext(null);
 const BundleDispatchContext = createContext(null);
@@ -99,6 +100,29 @@ function bundleReducer(state, action) {
 
 export function BundleProvider({ children }) {
   const [state, dispatch] = useReducer(bundleReducer, initialState);
+
+  useEffect(() => {
+    fetch('/api/steps')
+      .then((res) => {
+        if (!res.ok) throw new Error('Failed to fetch product data');
+        return res.json();
+      })
+      .then((data) => {
+        const stepsArray = data.steps;
+        const quantities = buildInitialQuantities(stepsArray);
+        const selectedVariants = buildInitialSelectedVariants(stepsArray);
+        dispatch({
+          type: 'SET_PRODUCTS',
+          steps: stepsArray,
+          quantities,
+          selectedVariants,
+        });
+      })
+      .catch((error) => {
+        console.error('Error fetching steps:', error);
+        dispatch({ type: 'SET_ERROR', error });
+      });
+  }, []);
 
   return (
     <BundleContext.Provider value={state}>

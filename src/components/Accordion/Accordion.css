@@ -90,15 +90,20 @@
 
 /* ── Content Area ── */
 .accordion-step__content {
-  overflow: hidden;
-  transition: max-height var(--transition-slow), opacity var(--transition-base);
-  max-height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-base) cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity var(--transition-base) cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
 }
 
 .accordion-step__content--open {
-  max-height: 2000px;
+  grid-template-rows: 1fr;
   opacity: 1;
+}
+
+.accordion-step__inner {
+  overflow: hidden;
 }
 
 .accordion-step__products {

@@ -1,8 +1,3 @@
-/**
- * Generates a unique key for tracking quantity of a product variant.
- * Products without variants use just the product id.
- * Products with variants use "productId__variantId".
- */
 export function getQuantityKey(productId, variantId = null) {
   if (variantId && variantId !== '_default') {
     return `${productId}__${variantId}`;
@@ -10,11 +5,6 @@ export function getQuantityKey(productId, variantId = null) {
   return productId;
 }
 
-/**
- * Extracts initial quantities from the steps data returned by the API.
- * Walks through every product and its initialQuantities to build the
- * flat quantities map the reducer expects.
- */
 export function buildInitialQuantities(steps) {
   const quantities = {};
 
@@ -37,10 +27,6 @@ export function buildInitialQuantities(steps) {
   return quantities;
 }
 
-/**
- * Builds the default selected variant for each product that has variants.
- * Picks the first variant in the list as the default.
- */
 export function buildInitialSelectedVariants(steps) {
   const selected = {};
 

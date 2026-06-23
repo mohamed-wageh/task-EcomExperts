@@ -11,13 +11,13 @@ function AppContent() {
 
   return (
     <div className="app-layout">
-      {/* Left Column: Builder */}
+
       <main className="app-main">
         <h1 className="sr-only">Build your custom Wyze security system</h1>
         <Accordion />
       </main>
 
-      {/* Right Column: Review */}
+
       <aside className="app-sidebar">
         <div className="app-sidebar__sticky">
           <ReviewPanel onCheckout={() => setIsCheckoutOpen(true)} />
